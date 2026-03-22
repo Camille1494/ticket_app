@@ -27,7 +27,7 @@
                         <span class="badge bg-primary">{{ ticket.etat.nom }}</span>
                     </td>
                     <td>{{ ticket.responsable ? ticket.responsable.email : '-' }}</td>
-                    <td>{{ ticket.date_ouverture ? ticket.date_ouverture|date('d/m/Y') : '-' }}</td>
+                    <td>{{ ticket.dateOuverture ? ticket.dateOuverture|date('d/m/Y') : '-' }}</td>
                     <td>
                         <a href="{{ path('app_staff_ticket_show', {id: ticket.id}) }}" class="btn btn-sm btn-info">Voir</a>
                     </td>

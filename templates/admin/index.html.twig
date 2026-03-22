@@ -32,7 +32,7 @@
                     <td>{{ ticket.categorie.nom }}</td>
                     <td><span class="badge bg-primary">{{ ticket.etat.nom }}</span></td>
                     <td>{{ ticket.responsable ? ticket.responsable.email : '-' }}</td>
-                    <td>{{ ticket.date_ouverture ? ticket.date_ouverture|date('d/m/Y') : '-' }}</td>
+                    <td>{{ ticket.dateOuverture ? ticket.dateOuverture|date('d/m/Y') : '-' }}</td>
                     <td>
                         <a href="{{ path('app_admin_ticket_edit', {id: ticket.id}) }}" class="btn btn-sm btn-warning">Modifier</a>
                         <form method="post" action="{{ path('app_admin_ticket_delete', {id: ticket.id}) }}" style="display:inline" onsubmit="return confirm('Supprimer ce ticket ?')">
