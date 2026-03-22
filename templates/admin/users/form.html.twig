@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ titre }}{% endblock %}
+
+{% block body %}
+    <h1>{{ titre }}</h1>
+
+    <div class="card col-md-6">
+        <div class="card-body">
+            {{ form_start(form) }}
+                <div class="mb-3">
+                    {{ form_label(form.email) }}
+                    {{ form_widget(form.email) }}
+                    {{ form_errors(form.email) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.roles) }}
+                    {{ form_widget(form.roles) }}
+                    {{ form_errors(form.roles) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.plainPassword) }}
+                    {{ form_widget(form.plainPassword) }}
+                    {{ form_errors(form.plainPassword) }}
+                    <small class="text-muted">Laisser vide pour ne pas changer le mot de passe</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                <a href="{{ path('app_admin_users') }}" class="btn btn-secondary">Annuler</a>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
