@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ticket #{{ ticket.id }}{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-8">
+            <h1>Ticket #{{ ticket.id }}</h1>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">Auteur</dt>
+                        <dd class="col-sm-9">{{ ticket.auteur }}</dd>
+
+                        <dt class="col-sm-3">Catégorie</dt>
+                        <dd class="col-sm-9">{{ ticket.categorie.nom }}</dd>
+
+                        <dt class="col-sm-3">État</dt>
+                        <dd class="col-sm-9">
+                            <span class="badge bg-primary">{{ ticket.etat.nom }}</span>
+                        </dd>
+
+                        <dt class="col-sm-3">Responsable</dt>
+                        <dd class="col-sm-9">{{ ticket.responsable ? ticket.responsable.email : '-' }}</dd>
+
+                        <dt class="col-sm-3">Date d'ouverture</dt>
+                        <dd class="col-sm-9">{{ ticket.date_ouverture ? ticket.date_ouverture|date('d/m/Y H:i') : '-' }}</dd>
+
+                        <dt class="col-sm-3">Description</dt>
+                        <dd class="col-sm-9">{{ ticket.description }}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-warning">
+                    <h5 class="mb-0">Modifier le statut</h5>
+                </div>
+                <div class="card-body">
+                    {{ form_start(form) }}
+                        <div class="mb-3">
+                            {{ form_label(form.etat) }}
+                            {{ form_widget(form.etat, {'attr': {'class': 'form-select'}}) }}
+                        </div>
+                        <button type="submit" class="btn btn-warning w-100">Mettre à jour</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+
+            <a href="{{ path('app_staff_tickets') }}" class="btn btn-secondary w-100 mt-3">Retour à la liste</a>
+        </div>
+    </div>
+{% endblock %}
