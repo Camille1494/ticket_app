@@ -38,7 +38,7 @@ class Ticket
 
     public function __construct()
     {
-        $this->dateOuverture = new \DateTime();
+        $this->date_ouverture = new \DateTime();
     }
 
     public function getId(): ?int
