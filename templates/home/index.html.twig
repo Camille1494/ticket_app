@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil — Ticket App{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Bienvenue sur Ticket App</h1>
+            <p class="lead">Signalez un incident, une panne ou une demande d'évolution.</p>
+        </div>
+        <div class="col-md-6 text-end">
+            {% if not app.user %}
+                <a href="{{ path('app_login') }}" class="btn btn-primary">Se connecter</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Créer un ticket</h4>
+                </div>
+                <div class="card-body">
+                    {{ form_start(form) }}
+                        <div class="mb-3">
+                            {{ form_label(form.auteur) }}
+                            {{ form_widget(form.auteur, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.auteur) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(form.description) }}
+                            {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.description) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(form.categorie) }}
+                            {{ form_widget(form.categorie, {'attr': {'class': 'form-select'}}) }}
+                            {{ form_errors(form.categorie) }}
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Envoyer le ticket</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
